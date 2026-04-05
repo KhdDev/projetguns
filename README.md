@@ -22,21 +22,21 @@
 
 ## `> A propos`
 
-Site perso inspir&eacute; de [guns.lol](https://guns.lol), cod&eacute; from scratch en vanilla.
-Projet d'entrainement front-end que je vais am&eacute;liorer au fil du temps.
+Site perso inspiré de [guns.lol](https://guns.lol), codé from scratch en vanilla.
+Projet d'entrainement front-end que je vais améliorer au fil du temps.
 
 <br>
 
 ## `> Features`
 
 ```
- Intro anim&eacute;e           click to enter avec transition smooth
+ Intro animée            click to enter avec transition smooth
  Particules              canvas 2D, flottantes en fond
- Discord live            statut en temps r&eacute;el via Lanyard API
+ Discord live            statut en temps réel via Lanyard API
  GitHub stats            repos, followers, bio via l'API publique
- Musique de fond         player int&eacute;gr&eacute; avec contr&ocirc;le volume
- Responsive              optimis&eacute; mobile
- N&eacute;on theme              dark mode, glow effects, glassmorphism
+ Musique de fond         player intégré avec contrôle volume
+ Responsive              optimisé mobile
+ Néon theme              dark mode, glow effects, glassmorphism
 ```
 
 <br>
@@ -44,12 +44,12 @@ Projet d'entrainement front-end que je vais am&eacute;liorer au fil du temps.
 ## `> Roadmap`
 
 ```diff
-+ Curseur custom avec train&eacute;e lumineuse
-+ Animations d'entr&eacute;e plus pouss&eacute;es
++ Curseur custom avec trainée lumineuse
++ Animations d'entrée plus poussées
 + Section projets / portfolio
-+ Th&egrave;mes interchangeables
++ Thèmes interchangeables
 + Effets sonores au hover
-+ Fond vid&eacute;o / gradient anim&eacute;
++ Fond vidéo / gradient animé
 ```
 
 <br>
