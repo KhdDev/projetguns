@@ -1,76 +1,75 @@
-# Kamss - Personal Page
+<div align="center">
 
-> Un site perso inspir\u00e9 de [guns.lol](https://guns.lol), construit from scratch.
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=8B5CF6&center=true&vCenter=true&random=false&width=435&lines=Kamss;Personal+Page" alt="Typing SVG" />
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+<br>
 
----
+[![Live](https://img.shields.io/badge/LIVE-khddev.github.io/projetguns-8B5CF6?style=for-the-badge&logoColor=white)](https://khddev.github.io/projetguns/)
 
-## Pr\u00e9sentation
+<br>
 
-Petit projet de landing page personnelle dans le style guns.lol.  
-L'id\u00e9e est simple : une page d'intro avec une transition smooth qui r\u00e9v\u00e8le mon profil, mes liens et ma musique.
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JS](https://img.shields.io/badge/JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-C'est avant tout un **projet d'entra\u00eenement** pour pratiquer le front-end et essayer des trucs visuels. Le but c'est de l'am\u00e9liorer petit \u00e0 petit, ajouter des features et peaufiner le design au fil du temps.
+<br>
 
----
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=KhdDev&repo=projetguns&theme=midnight-purple&hide_border=true&bg_color=0a0a0f" />
 
-## Stack
+</div>
 
-Aucun framework, aucune d\u00e9pendance. Juste du code vanilla :
+<br>
 
-- **HTML5** \u2014 Structure de la page
-- **CSS3** \u2014 Animations, glassmorphism, th\u00e8me n\u00e9on
-- **JavaScript** \u2014 Particules canvas, int\u00e9grations API, transitions
+## `> A propos`
 
----
+Site perso inspir&eacute; de [guns.lol](https://guns.lol), cod&eacute; from scratch en vanilla.
+Projet d'entrainement front-end que je vais am&eacute;liorer au fil du temps.
 
-## Features
+<br>
 
-- Page d'intro anim\u00e9e avec transition au clic
-- Particules flottantes en arri\u00e8re-plan (Canvas 2D)
-- Carte Discord avec statut en temps r\u00e9el via [Lanyard API](https://github.com/Phineas/lanyard)
-- Carte GitHub avec stats fetch\u00e9es depuis l'API publique
-- Player audio en fond avec contr\u00f4le du volume
-- Design responsive, optimis\u00e9 mobile
-- Th\u00e8me sombre n\u00e9on avec effets glow
+## `> Features`
 
----
-
-## Roadmap
-
-Ce projet va \u00e9voluer. Quelques id\u00e9es pour la suite :
-
-- [ ] Curseur custom avec tra\u00een\u00e9e lumineuse
-- [ ] Animations d'entr\u00e9e plus pouss\u00e9es
-- [ ] Section projets / portfolio
-- [ ] Th\u00e8mes interchangeables
-- [ ] Effets sonores au hover
-- [ ] Fond vid\u00e9o / gradient anim\u00e9
-
----
-
-## Setup
-
-```bash
-# Clone le repo
-git clone https://github.com/KhdDev/projetguns.git
-
-# Ouvre index.html dans ton navigateur
-# C'est tout, y'a rien \u00e0 installer
+```
+ Intro anim&eacute;e           click to enter avec transition smooth
+ Particules              canvas 2D, flottantes en fond
+ Discord live            statut en temps r&eacute;el via Lanyard API
+ GitHub stats            repos, followers, bio via l'API publique
+ Musique de fond         player int&eacute;gr&eacute; avec contr&ocirc;le volume
+ Responsive              optimis&eacute; mobile
+ N&eacute;on theme              dark mode, glow effects, glassmorphism
 ```
 
+<br>
+
+## `> Roadmap`
+
+```diff
++ Curseur custom avec train&eacute;e lumineuse
++ Animations d'entr&eacute;e plus pouss&eacute;es
++ Section projets / portfolio
++ Th&egrave;mes interchangeables
++ Effets sonores au hover
++ Fond vid&eacute;o / gradient anim&eacute;
+```
+
+<br>
+
+## `> Setup`
+
+```bash
+git clone https://github.com/KhdDev/projetguns.git
+cd projetguns
+# ouvre index.html -> c'est tout
+```
+
+<br>
+
 ---
 
-## Live
+<div align="center">
 
-Le site est d\u00e9ploy\u00e9 sur GitHub Pages :  
-**[khddev.github.io/projetguns](https://khddev.github.io/projetguns/)**
+<img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=80&section=footer" width="100%"/>
 
----
+**Built from scratch by [Kamss](https://github.com/KhdDev)**
 
-<p align="center">
-  <sub>Built with patience and too much CSS \u2014 Kamss</sub>
-</p>
+</div>
