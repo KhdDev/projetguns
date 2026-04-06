@@ -13,6 +13,37 @@ body {
     width: 100vw;
 }
 
+/* Background image */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.pinimg.com/originals/1f/20/55/1f20558bc93e0b2f73ef15ab38d626a9.gif') center/cover no-repeat;
+    z-index: -1;
+    filter: blur(18px) brightness(0.3);
+    transform: scale(1.15);
+    transition: filter 1s ease, transform 1s ease;
+}
+
+.bg-image.revealed {
+    filter: blur(10px) brightness(0.2);
+    transform: scale(1.1);
+}
+
+/* Cursor snow particles */
+.cursor-snow {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(57, 255, 20, 0.6);
+    box-shadow: 0 0 3px rgba(57, 255, 20, 0.3);
+    pointer-events: none;
+    z-index: 100;
+}
+
 /* Particles canvas */
 #particles {
     position: fixed;
@@ -32,7 +63,6 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 10;
@@ -42,35 +72,24 @@ body {
 
 .intro.fade-out {
     opacity: 0;
-    transform: scale(1.1);
+    transform: scale(1.05);
     pointer-events: none;
 }
 
 .intro-text {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(139, 92, 246, 0.1);
-    animation: glow-pulse 2s ease-in-out infinite, float 3s ease-in-out infinite;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     user-select: none;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+    text-transform: lowercase;
 }
 
 .intro-text:hover {
-    transform: scale(1.05);
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5), 0 0 100px rgba(139, 92, 246, 0.3);
-}
-
-.intro-hint {
-    margin-top: 20px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.3);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    animation: blink 2s ease-in-out infinite;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 6px;
 }
 
 /* ===== PROFILE SCREEN ===== */
@@ -102,7 +121,7 @@ body {
 
 .profile-card {
     width: 100%;
-    max-width: 420px;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,14 +139,14 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid rgba(139, 92, 246, 0.6);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+    border: 3px solid rgba(57, 255, 20, 0.6);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3), 0 0 40px rgba(57, 255, 20, 0.1);
     object-fit: cover;
     transition: box-shadow 0.3s ease;
 }
 
 .avatar:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.5), 0 0 60px rgba(57, 255, 20, 0.2);
 }
 
 .status-dot {
@@ -151,8 +170,35 @@ body {
 .username {
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    min-height: 2.4rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.username.typing::after {
+    content: '|';
+    animation: cursor-blink 0.5s step-end infinite;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.badge {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    cursor: default;
+}
+
+.badge:hover {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 .bio {
@@ -162,9 +208,18 @@ body {
     max-width: 300px;
 }
 
+/* ===== CARDS ROW ===== */
+.cards-row {
+    width: 100%;
+    display: flex;
+    gap: 14px;
+}
+
+
 /* ===== CARDS ===== */
 .card {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
@@ -177,14 +232,329 @@ body {
     transform: translateY(-2px);
 }
 
+.discord-card {
+    background: #111214;
+    border-color: rgba(88, 101, 242, 0.1);
+    padding: 0;
+    overflow: hidden;
+}
+
 .discord-card:hover {
-    border-color: rgba(88, 101, 242, 0.3);
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.1);
+    border-color: rgba(88, 101, 242, 0.35);
+    box-shadow: 0 0 25px rgba(88, 101, 242, 0.12);
+}
+
+.discord-banner {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(135deg, #5865f2, #3b44a8);
+    position: relative;
+}
+
+.discord-profile {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin-top: -22px;
+    position: relative;
+    z-index: 2;
+}
+
+.discord-avatar-wrapper {
+    position: relative;
+}
+
+.discord-avatar-wrapper .discord-avatar {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #111214;
+    border-radius: 50%;
+}
+
+.discord-status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #747f8d;
+    border: 3px solid #111214;
+}
+
+.discord-status-dot.online { background: #3ba55c; }
+.discord-status-dot.idle { background: #faa61a; }
+.discord-status-dot.dnd { background: #ed4245; }
+.discord-status-dot.offline { background: #747f8d; }
+
+.discord-badges-row {
+    display: flex;
+    gap: 4px;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.discord-badges-row .badge {
+    font-size: 0.75rem;
+}
+
+.discord-details {
+    padding: 6px 10px 10px;
+}
+
+.discord-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 8px 0;
+}
+
+.discord-section {
+    margin-bottom: 5px;
+}
+
+.discord-section-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.discord-bio-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.discord-member-since {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.github-card {
+    background: #0d1117;
+    border-color: rgba(255, 255, 255, 0.08);
+    padding: 0;
+    overflow: hidden;
 }
 
 .github-card:hover {
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.06);
+}
+
+.github-banner {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(135deg, #161b22, #0d1117);
+    position: relative;
+}
+
+.github-profile {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 12px;
+    margin-top: -22px;
+    position: relative;
+    z-index: 2;
+}
+
+.github-avatar-wrapper .github-avatar {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #0d1117;
+    border-radius: 50%;
+}
+
+.github-details {
+    padding: 6px 10px 10px;
+}
+
+.github-name {
+    text-shadow: none;
+}
+
+.github-tag {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.github-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 8px 0;
+}
+
+.github-section {
+    margin-bottom: 5px;
+}
+
+.github-section-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.github-location {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.github-member-since {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.steam-card {
+    width: 100%;
+    background: #1b2838;
+    border-color: rgba(102, 192, 244, 0.1);
+    padding: 0;
+    overflow: hidden;
+}
+
+.steam-card:hover {
+    border-color: rgba(102, 192, 244, 0.3);
+    box-shadow: 0 0 25px rgba(102, 192, 244, 0.1);
+}
+
+.steam-banner {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(135deg, #2a475e, #1b2838);
+    position: relative;
+}
+
+.steam-profile {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 12px;
+    margin-top: -22px;
+    position: relative;
+    z-index: 2;
+}
+
+.steam-avatar-wrapper {
+    position: relative;
+}
+
+.steam-avatar-wrapper .steam-avatar {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #1b2838;
+    border-radius: 4px;
+}
+
+.steam-status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #747f8d;
+    border: 3px solid #1b2838;
+}
+
+.steam-status-dot.online { background: #57cbde; }
+.steam-status-dot.ingame { background: #a4d007; }
+.steam-status-dot.offline { background: #747f8d; }
+
+.steam-details {
+    padding: 6px 10px 10px;
+}
+
+.steam-tag {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.steam-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 6px 0;
+}
+
+.steam-section {
+    margin-bottom: 5px;
+}
+
+.steam-section-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.steam-member-since {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Currently playing */
+.currently-playing {
+    display: none;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.currently-playing.visible {
+    display: block;
+}
+
+.game-banner {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.5);
+}
+
+.game-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.game-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(57, 255, 20, 0.8);
+    font-weight: 600;
+}
+
+.game-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
 }
 
 .card-header {
@@ -200,12 +570,12 @@ body {
 }
 
 .card-icon {
-    width: 16px;
-    height: 16px;
+    font-size: 16px;
 }
 
 .discord-card .card-icon { color: #5865f2; }
 .github-card .card-icon { color: #fff; }
+.steam-card .card-icon { color: #66c0f4; }
 
 .card-body {
     display: flex;
@@ -214,36 +584,73 @@ body {
 }
 
 /* Discord info */
-.discord-info, .github-info {
+.discord-info, .github-info, .steam-info {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.discord-avatar, .github-avatar {
+.discord-avatar, .github-avatar, .steam-avatar {
     width: 44px;
     height: 44px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
 
 .discord-name, .github-name {
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-.discord-status, .github-bio {
+.steam-name {
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.discord-name {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(88, 101, 242, 0.3);
+}
+
+.discord-tag {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 1px;
+}
+
+.discord-tag:hover {
+    color: rgba(57, 255, 20, 0.7);
+}
+
+.discord-tag.copied {
+    color: rgba(57, 255, 20, 0.9);
+}
+
+.discord-status, .github-bio, .steam-status {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.4);
     margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .discord-activity {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.45);
     padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.03);
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
     border-radius: 8px;
+    border-left: 2px solid rgba(88, 101, 242, 0.4);
     display: none;
 }
 
@@ -254,9 +661,11 @@ body {
 /* GitHub stats */
 .github-stats {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.4);
+    flex-wrap: wrap;
+    margin-bottom: 8px;
 }
 
 .github-stats span {
@@ -271,24 +680,23 @@ body {
 }
 
 /* ===== LINK BUTTONS ===== */
-.links {
-    width: 100%;
+.card-group {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 5px;
 }
 
 .link-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 14px 20px;
+    gap: 8px;
+    padding: 12px 16px;
     border-radius: 12px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -319,6 +727,16 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.steam-btn {
+    background: rgba(102, 192, 244, 0.15);
+    border-color: rgba(102, 192, 244, 0.3);
+}
+
+.steam-btn:hover {
+    box-shadow: 0 0 25px rgba(102, 192, 244, 0.2);
+    background: rgba(102, 192, 244, 0.25);
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes glow-pulse {
     0%, 100% { opacity: 1; }
@@ -336,19 +754,19 @@ body {
 }
 
 /* Stagger animations for cards */
-.profile.show .discord-card {
+.profile.show .cards-row {
     animation: slide-up 0.6s ease forwards;
     animation-delay: 0.2s;
     opacity: 0;
 }
 
-.profile.show .github-card {
+.profile.show .steam-card {
     animation: slide-up 0.6s ease forwards;
     animation-delay: 0.4s;
     opacity: 0;
 }
 
-.profile.show .links {
+.profile.show .steam-btn {
     animation: slide-up 0.6s ease forwards;
     animation-delay: 0.6s;
     opacity: 0;
@@ -375,22 +793,22 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(139, 92, 246, 0.3);
+    background: rgba(57, 255, 20, 0.3);
     border-radius: 4px;
 }
 
 /* ===== MUSIC CONTROL ===== */
 .music-control {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px;
+    right: 16px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 30px;
-    padding: 8px 14px;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 6px 10px;
     backdrop-filter: blur(10px);
     z-index: 50;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -408,51 +826,81 @@ body {
     pointer-events: all;
 }
 
-.music-btn {
+.music-btn, .music-nav-btn {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 4px;
+    padding: 3px;
     transition: color 0.3s;
 }
 
-.music-btn:hover {
-    color: rgba(139, 92, 246, 0.8);
+.music-btn:hover, .music-nav-btn:hover {
+    color: rgba(57, 255, 20, 0.8);
 }
 
 .music-btn.muted svg {
     opacity: 0.3;
 }
 
-.volume-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 70px;
-    height: 4px;
+.music-progress {
+    width: 50px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    outline: none;
     cursor: pointer;
+    overflow: hidden;
 }
 
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(139, 92, 246, 0.8);
-    cursor: pointer;
-    box-shadow: 0 0 6px rgba(139, 92, 246, 0.4);
+.music-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: rgba(57, 255, 20, 0.6);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* ===== VIEW COUNTER ===== */
+.view-counter {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 6px 12px;
+    backdrop-filter: blur(10px);
+    z-index: 50;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.view-counter svg {
+    color: rgba(57, 255, 20, 0.5);
+}
+
+.view-counter.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.view-counter.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .intro-text {
-        font-size: 2rem;
+        font-size: 1.1rem;
     }
 
     .username {
@@ -462,4 +910,9 @@ body {
     .profile-card {
         gap: 16px;
     }
+
+    .cards-row {
+        flex-direction: column;
+    }
+
 }
